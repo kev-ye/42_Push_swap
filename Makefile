@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/13 15:30:37 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/14 13:11:29 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 CC		= clang
 CFLAGS 	= -Wall -Wextra -Werror
 LFLAGS	= -L./libft -lft
-IFLAGS 	= -I./inc
+IFLAGS 	= -I./libft/inc -I./inc
 
 # DIRECTORIES
 
@@ -24,7 +24,7 @@ INC_DIR 		:= inc
 SRC_DIR 		:= src
 SUB_DIR			:= checker \
 				   push_swap \
-				   utils
+				   common
 LFT_DIR			:= libft
 OBJ_DIR 		:= $(BUILD)/obj
 DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
@@ -33,15 +33,29 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 
 PUSH_SWAP		:= push_swap
 CHECKER			:= checker
-SRC				:= 
-SRC_PUSH_SWAP	:= 
-SRC				:= 
-SRC_CHECKER		:= 
-SRC				:= 
-SRC_UTILS		:= 
+SRC				:= push_swap.c
+SRC_PUSH_SWAP	:= $(addprefix push_swap/, $(SRC))
+SRC				:= action.c \
+				   checker.c
+SRC_CHECKER		:= $(addprefix checker/, $(SRC))
+SRC				:= free.c \
+				   op_p.c \
+				   op_r.c \
+				   op_rr.c \
+				   op_s.c \
+				   parser.c
+SRC_COMMON		:= $(addprefix common/, $(SRC))
+SRC				:= lstadd_back.c \
+				   lstadd_front.c \
+				   lstclear.c \
+				   lstdelone.c \
+				   lstlast.c \
+				   lstnew.c \
+				   lstsize.c
+SRC_LIST		:= $(addprefix list/, $(SRC))
 OBJ_PUSH_SWAP	:= $(SRC_PUSH_SWAP:%.c=$(OBJ_DIR)/%.o)
 OBJ_CHECKER		:= $(SRC_CHECKER:%.c=$(OBJ_DIR)/%.o)
-OBJ_UTILS		:= $(SRC_UTILS:%.c=$(OBJ_DIR)/%.o)
+OBJ_COMMON		:= $(SRC_COMMON:%.c=$(OBJ_DIR)/%.o)
 
 # COLORS
 
@@ -56,12 +70,14 @@ CYAN_COLOR 		= \033[1;36m
 
 # MAKEFILE
 
-$(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(OBJ_CHECKER) $(OBJ_UTILS)
+$(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(OBJ_CHECKER) $(OBJ_COMMON)
 	@$(MAKE) -C $(LFT_DIR)
 	@echo "Creating $(RED_COLOR) $(PUSH_SWAP) $(DEFAULT_COLOR)..."
-	$(CC) $(CFLAG) $(IFLAG) $(LFLAG) $(OBJ_PUSH_SWAP) $(OBJ_UTILS) -o $(PUSH_SWAP)
+	@$(CC) $(CFLAG) $(IFLAGS) $(LFLAGS) $(OBJ_PUSH_SWAP) $(OBJ_COMMON) -o $(PUSH_SWAP)
+	@echo "$(GREEN_COLOR)Compilation $(YELLOW_COLOR)of $(RED_COLOR)$(PUSH_SWAP) $(BLUE_COLOR)done$(DEFAULT_COLOR)"
 	@echo "Creating $(RED_COLOR) $(CHECKER) $(DEFAULT_COLOR)..."
-	$(CC) $(CFLAG) $(IFLAG) $(LFLAG) $(OBJ_CHECKER) $(OBJ_UTILS) -o $(CHECKER)
+	@$(CC) $(CFLAG) $(IFLAGS) $(LFLAGS) $(OBJ_CHECKER) $(OBJ_COMMON) -o $(CHECKER)
+	@echo "$(GREEN_COLOR)Compilation $(YELLOW_COLOR)of $(RED_COLOR)$(CHECKER) $(BLUE_COLOR)done$(DEFAULT_COLOR)"
 
 all: $(PUSH_SWAP)
 
@@ -70,8 +86,8 @@ clean:
 	rm -Rf $(BUILD)
 fclean: clean
 	@$(MAKE) -C $(LFT_DIR) fclean
-	rm -Rf $(PUSH_SWAP)
-	rm -Rf $(CHECKER)
+	rm -Rf push_swap
+	rm -Rf checker
 
 re: fclean all
 
@@ -83,4 +99,4 @@ $(BUILD):
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(BUILD)
 	@echo "Compiling $(CYAN_COLOR)$< $(DEFAULT_COLOR)..."
-	@$(CC) $(CFLAG) $(IFLAG) -c $< -o $@
+	@$(CC) $(CFLAG) $(IFLAGS) -c $< -o $@

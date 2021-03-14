@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:01:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/13 21:49:15 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 11:42:03 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void    op_sa(t_stack *stacks)
 {
-    int tmp;
+    void *tmp;
 
-    if (!stacks->a || lstsize(stacks->a) == 1)
+    if (!stacks->a || ft_lstsize(stacks->a) == 1)
         return ;
-    tmp = stacks->a->data;
-    stacks->a->data = stacks->a->next->data;
-    stacks->a->next->data = tmp;
+    tmp = stacks->a->content;
+    stacks->a->content = stacks->a->next->content;
+    stacks->a->next->content = tmp;
 }
 
 void    op_sb(t_stack *stacks)
 {
-    int tmp;
+    void *tmp;
 
-    if (!stacks->b || lstsize(stacks->b) == 1)
+    if (!stacks->b || ft_lstsize(stacks->b) == 1)
         return ;
-    tmp = stacks->b->data;
-    stacks->b->data = stacks->b->next->data;
-    stacks->b->next->data = tmp;
+    tmp = stacks->b->content;
+    stacks->b->content = stacks->b->next->content;
+    stacks->b->next->content = tmp;
 }
 
 void    op_ss(t_stack *stacks)

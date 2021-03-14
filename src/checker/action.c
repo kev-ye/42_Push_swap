@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/13 22:07:50 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 12:58:34 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ static void do_action(t_stack *stacks, char *line, int ac)
 
 static int    is_sorted(t_stack *stacks, int size)
 {
-    t_data *tmp;
+    t_list *tmp;
 
     tmp = stacks->a;
-    if (lstsize(tmp) != size)
+    if (ft_lstsize(tmp) != size)
         return (0);
     while (tmp->next)
     {
-        if (tmp->data < tmp->next->data)
+        if (tmp->content < tmp->next->content)
             tmp = tmp->next;
         else
             return (0);
@@ -83,16 +83,16 @@ static int    is_sorted(t_stack *stacks, int size)
     return (1);
 }
 
-static void     print_stack(t_data *a, t_data *b) // debug
+static void     print_stack(t_list *a, t_list *b) // debug
 {
     if (a == NULL && b == NULL)
         return ;
     if (a && b)
-        printf("A : %d | b : %d\n", a->data, b->data);
+        printf("a : %d | b : %d\n", (int)a->content, (int)b->content);
     else if (a)
-        printf("A : %d | b : \n", a->data);
+        printf("a : %d | b : \n", (int)a->content);
     else if (b)
-        printf("A :   | b : %d\n", b->data);
+        printf("a :   | b : %d\n", (int)b->content);
     if (a && b)
         print_stack(a->next, b->next);
     else if (a)
@@ -107,7 +107,7 @@ void    action(t_stack *stacks, int ac)
     int r;
     int size;
 
-    size = lstsize(stacks->a);
+    size = ft_lstsize(stacks->a);
     r = 1;
     while (r)
     {

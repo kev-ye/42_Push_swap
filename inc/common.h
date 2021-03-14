@@ -6,16 +6,10 @@
 #include <stdio.h> // delete
 #include "libft.h"
 
-typedef struct s_data
-{
-    int data;
-    struct s_data *next;
-}              t_data;
-
 typedef struct s_stack
 {
-    t_data *a;
-    t_data *b;
+    t_list *a;
+    t_list *b;
 }              t_stack;
 
 /*
@@ -38,16 +32,5 @@ void    op_rr(t_stack *stacks);
 void    op_rra(t_stack *stacks);
 void    op_rrb(t_stack *stacks);
 void    op_rrr(t_stack *stacks);
-
-/*
-** LIST FUNCTION
-*/
-void	lstadd_back(t_data **alst, t_data *new);
-void	lstadd_front(t_data **alst, t_data *new);
-void	lstclear(t_data **lst);
-void	lstdelone(t_data *lst);
-t_data	*lstlast(t_data *lst);
-t_data	*lstnew(int data);
-int	lstsize(t_data *lst);
 
 #endif

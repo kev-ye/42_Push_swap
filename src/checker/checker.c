@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstlast.c                                          :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 16:57:16 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/13 16:27:09 by kaye             ###   ########.fr       */
+/*   Created: 2021/03/12 19:18:52 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/14 12:46:43 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common.h"
+#include "checker.h"
 
-t_data	*lstlast(t_data *lst)
+int main(int ac, char **av)
 {
-	if (lst)
-		while (lst->next)
-			lst = lst->next;
-	return (lst);
+    t_stack *stacks;
+
+    stacks = get_stack_data(ac, av);
+    action(stacks, ac);
+    return (0);
 }

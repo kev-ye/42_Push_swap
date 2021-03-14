@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/13 17:23:36 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 13:05:58 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_stack    *get_stack_data(int ac, char **av)
 {
     t_stack *stacks;
-    int data;
+    void *data;
     int i;
 
     i = 0;
@@ -25,15 +25,15 @@ t_stack    *get_stack_data(int ac, char **av)
     ft_bzero(stacks, sizeof(t_stack));
     while (++i < ac)
     {
-        data = ft_atoi(av[i]);
+        data = (void *)(uintptr_t)ft_atoi(av[i]);
         if (!stacks->a)
         {
-            stacks->a = lstnew(data);
+            stacks->a = ft_lstnew(data);
             if (!stacks->a)
                 return (NULL);
         }
         else
-            lstadd_back(&stacks->a, lstnew(data));
+            ft_lstadd_back(&stacks->a, ft_lstnew(data));
     }
     return (stacks);
 }
