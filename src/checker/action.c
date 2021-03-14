@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 19:18:48 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 21:37:50 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int  do_action(t_stack *stacks,char *line)
         if (!ft_strcmp(line, op[i].name))
         {
             op[i].f(stacks);
+            print_stack(stacks->a, stacks->b); // debug
             return (1);
         }
         else if (!*line)
@@ -46,7 +47,7 @@ static int    is_sorted(t_stack *stacks, int size)
         return (0);
     while (tmp->next)
     {
-        if (tmp->content < tmp->next->content)
+        if ((int)tmp->content < (int)tmp->next->content)
             tmp = tmp->next;
         else
             return (0);
@@ -68,7 +69,6 @@ void    action(t_stack *stacks, int ac)
         r = get_next_line(STDIN_FILENO, &line);
         if (!do_action(stacks, line))
             return ;
-        print_stack(stacks->a, stacks->b); // debug
         free(line);
     }
     if (is_sorted(stacks, size))
