@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:52:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 17:23:51 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 22:32:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 # include "private/get_next_line.h"
+# include "private/ft_printf.h"
 # define BUFFER_SIZE_PN 11
 
 typedef struct s_list
@@ -86,6 +88,7 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putchar(char c);
 void			ft_putstr(char *s);
 int				get_next_line(int fd, char **line);
+int				ft_printf(const char *format, ...);
 
 /*
 ** Lst function

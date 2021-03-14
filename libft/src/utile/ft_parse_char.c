@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   ft_parse_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 17:21:46 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 22:34:11 by kaye             ###   ########.fr       */
+/*   Created: 2020/11/14 19:25:38 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/14 22:27:08 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Converts the string pointed to by str to long long representation.
-*/
-
-long long	ft_atoll(const char *str)
+int	ft_parse_char(int c, t_flag flag)
 {
-	int			signe;
-	long long	res;
+	int	count;
 
-	signe = 1;
-	res = 0;
-	while (*str && ((*str >= '\t' && *str <= '\r') || (*str == ' ')))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			signe = -1;
-		++str;
-	}
-	while (*str && ft_isdigit(*str))
-	{
-		res = res * 10 + *str - '0';
-		++str;
-	}
-	return (res * signe);
+	count = 0;
+	if (flag.minus)
+		count += ft_putchar_pf(c);
+	count += ft_parse_width(flag.width, 1, flag.zero);
+	if (!flag.minus)
+		count += ft_putchar_pf(c);
+	return (count);
 }
