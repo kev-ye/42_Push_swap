@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/14 13:11:29 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/14 18:13:52 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,16 +43,9 @@ SRC				:= free.c \
 				   op_r.c \
 				   op_rr.c \
 				   op_s.c \
-				   parser.c
+				   parser.c \
+				   print.c
 SRC_COMMON		:= $(addprefix common/, $(SRC))
-SRC				:= lstadd_back.c \
-				   lstadd_front.c \
-				   lstclear.c \
-				   lstdelone.c \
-				   lstlast.c \
-				   lstnew.c \
-				   lstsize.c
-SRC_LIST		:= $(addprefix list/, $(SRC))
 OBJ_PUSH_SWAP	:= $(SRC_PUSH_SWAP:%.c=$(OBJ_DIR)/%.o)
 OBJ_CHECKER		:= $(SRC_CHECKER:%.c=$(OBJ_DIR)/%.o)
 OBJ_COMMON		:= $(SRC_COMMON:%.c=$(OBJ_DIR)/%.o)

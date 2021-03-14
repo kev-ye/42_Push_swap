@@ -6,63 +6,35 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 12:58:34 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 19:18:48 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int  action_check(char *line)
+static int  do_action(t_stack *stacks,char *line)
 {
-    if (!ft_strncmp(line, "sa\n", 3) || !ft_strcmp(line, "sa"))
-        return (1);
-    else if (!ft_strncmp(line, "sb\n", 3) || !ft_strcmp(line, "sb"))
-        return (1);
-    else if (!ft_strncmp(line, "ss\n", 3) || !ft_strcmp(line, "ss"))
-        return (1);
-    else if (!ft_strncmp(line, "pa\n", 3) || !ft_strcmp(line, "pa"))
-        return (1);
-    else if (!ft_strncmp(line, "pb\n", 3) || !ft_strcmp(line, "pb"))
-        return (1);
-    else if (!ft_strncmp(line, "ra\n", 3) || !ft_strcmp(line, "ra"))
-        return (1);
-    else if (!ft_strncmp(line, "rb\n", 3) || !ft_strcmp(line, "rb"))
-        return (1);
-    else if (!ft_strncmp(line, "rra\n", 4) || !ft_strcmp(line, "rra"))
-        return (1);
-    else if (!ft_strncmp(line, "rrb\n", 4) || !ft_strcmp(line, "rrb"))
-        return (1);
-    else if (!ft_strncmp(line, "rrr\n", 4) || !ft_strcmp(line, "rrr"))
-        return (1);
-    else if (!*line)
-        return (1);
-    return (0);
-}
+    const t_op  op[OP_AMOUT] = {
+        {"sa", op_sa}, {"sb", op_sb}, {"ss", op_ss}, {"pa", op_pa},
+        {"pb", op_pb}, {"ra", op_ra}, {"rb", op_rb}, {"rr", op_rr},
+        {"rra", op_rra}, {"rrb", op_rrb}, {"rrr", op_rrr}
+    };
+    int i;
 
-static void do_action(t_stack *stacks, char *line, int ac)
-{
-    if (!ft_strncmp(line, "sa\n", 3) || !ft_strcmp(line, "sa"))
-        op_sa(stacks);
-    else if (!ft_strncmp(line, "sb\n", 3) || !ft_strcmp(line, "sb"))
-        op_sb(stacks);
-    else if (!ft_strncmp(line, "ss\n", 3) || !ft_strcmp(line, "ss"))
-        op_ss(stacks);
-    else if (!ft_strncmp(line, "pa\n", 3) || !ft_strcmp(line, "pa"))
-        op_pa(stacks);
-    else if (!ft_strncmp(line, "pb\n", 3) || !ft_strcmp(line, "pb"))
-        op_pb(stacks);
-    else if (!ft_strncmp(line, "ra\n", 3) || !ft_strcmp(line, "ra"))
-        op_ra(stacks);
-    else if (!ft_strncmp(line, "rb\n", 3) || !ft_strcmp(line, "rb"))
-        op_rb(stacks);
-    else if (!ft_strncmp(line, "rr\n", 4) || !ft_strcmp(line, "rr"))
-        op_rr(stacks);
-    else if (!ft_strncmp(line, "rra\n", 4) || !ft_strcmp(line, "rra"))
-        op_rra(stacks);
-    else if (!ft_strncmp(line, "rrb\n", 4) || !ft_strcmp(line, "rrb"))
-        op_rrb(stacks);
-    else if (!ft_strncmp(line, "rrr\n", 4) || !ft_strcmp(line, "rrr"))
-        op_rrr(stacks);
+    i = -1;
+    while (++i < 11)
+    {
+        if (!ft_strcmp(line, op[i].name))
+        {
+            op[i].f(stacks);
+            return (1);
+        }
+        else if (!*line)
+            return (1);
+    }
+    clean_all(stacks, line);
+    ft_putstr("ERROR\n");
+    return (0);
 }
 
 static int    is_sorted(t_stack *stacks, int size)
@@ -79,26 +51,8 @@ static int    is_sorted(t_stack *stacks, int size)
         else
             return (0);
     }
-    clean_all(stacks);
+    clean_all(stacks, NULL);
     return (1);
-}
-
-static void     print_stack(t_list *a, t_list *b) // debug
-{
-    if (a == NULL && b == NULL)
-        return ;
-    if (a && b)
-        printf("a : %d | b : %d\n", (int)a->content, (int)b->content);
-    else if (a)
-        printf("a : %d | b : \n", (int)a->content);
-    else if (b)
-        printf("a :   | b : %d\n", (int)b->content);
-    if (a && b)
-        print_stack(a->next, b->next);
-    else if (a)
-        print_stack(a->next, NULL);
-    else if (b)
-        print_stack(NULL, b->next);
 }
 
 void    action(t_stack *stacks, int ac)
@@ -109,16 +63,11 @@ void    action(t_stack *stacks, int ac)
 
     size = ft_lstsize(stacks->a);
     r = 1;
-    while (r)
+    while (r > 0)
     {
         r = get_next_line(STDIN_FILENO, &line);
-        if (!action_check(line))
-        {
-            free(line);
-            ft_putstr("ERROR\n");
+        if (!do_action(stacks, line))
             return ;
-        }
-        do_action(stacks, line, ac);
         print_stack(stacks->a, stacks->b); // debug
         free(line);
     }

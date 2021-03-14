@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 16:57:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/09 19:38:32 by kaye             ###   ########.fr       */
+/*   Created: 2021/03/14 17:21:46 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/14 17:23:17 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Adds the element new at the end of the list.
+** Converts the string pointed to by str to long long representation.
 */
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+long long	ft_atoll(const char *str)
 {
-	t_list	*tmp;
+	int	signe;
+	long long	res;
 
-	tmp = *alst;
-	if (!tmp)
-		*alst = new;
-	else
+	signe = 1;
+	res = 0;
+	while (*str && ((*str >= '\t' && *str <= '\r') || (*str == ' ')))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		if (*str == '-')
+			signe = -1;
+		++str;
 	}
+	while (*str && ft_isdigit(*str))
+	{
+		res = res * 10 + *str - '0';
+		++str;
+	}
+	return (res * signe);
 }

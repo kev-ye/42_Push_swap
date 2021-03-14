@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:52:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/09 19:36:50 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/14 17:23:51 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 size_t			ft_strnlen(const char *s, size_t maxlen);
 size_t			ft_charinstr(char *s, char c);
 char			*ft_strcat(char *dest, const char *src);
+long long		ft_atoll(const char *str);
 
 /*
 ** Ctype function
