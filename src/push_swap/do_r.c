@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   do_r.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 19:18:52 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/16 18:40:07 by kaye             ###   ########.fr       */
+/*   Created: 2021/03/16 22:04:48 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/16 22:05:30 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "common.h"
 
-int main(int ac, char **av)
+void    do_ra(t_stack *stacks)
 {
-    t_stack *stacks;
+    op_ra(stacks);
+    ft_putstr("ra\n");
+}
 
-    if (ac == 1)
-        return (0);
-    stacks = get_stack_data(ac, av);
-    if (!stacks)
-    {
-        clean_all(stacks, NULL);
-        ft_putstr("Error\n");
-        return (0);
-    }
-    if (stacks->a)
-        action(stacks, ac);
-    return (0);
+void    do_rb(t_stack *stacks)
+{
+    op_rb(stacks);
+    ft_putstr("rb\n");
+}
+
+void    do_rr(t_stack *stacks)
+{
+    op_rr(stacks);
+    ft_putstr("rr\n");
 }

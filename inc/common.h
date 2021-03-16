@@ -13,6 +13,9 @@ typedef struct s_stack
     t_list  *a;
     t_list  *b;
     int     flag_v;
+    int     bigger;
+    int     smaller;
+    int     median;
 }              t_stack;
 
 typedef struct s_op
@@ -25,10 +28,9 @@ typedef struct s_op
 /*
 ** COMMON
 */
-// t_stack    *get_stack_data(int ac, char **av);
-t_stack	*get_stack_data(int ac, char **av, t_stack *stacks);
+t_stack    *get_stack_data(int ac, char **av);
 void    clean_all(t_stack *stacks, char *line);
-void    print_stack(t_list *a, t_list *b);
+void	print_stack(t_stack *stacks);
 
 /*
 ** COMMON - OPERATION

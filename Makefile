@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/16 13:42:19 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/16 22:07:55 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,11 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 
 PUSH_SWAP		:= push_swap
 CHECKER			:= checker
-SRC				:= push_swap.c
+SRC				:= push_swap.c \
+				   do_s.c \
+				   do_p.c \
+				   do_r.c \
+				   do_rr.c
 SRC_PUSH_SWAP	:= $(addprefix push_swap/, $(SRC))
 SRC				:= action.c \
 				   checker.c
@@ -87,8 +91,8 @@ re: fclean all
 .PHONY: all clean fclean re
 
 $(BUILD):
-	echo "Creating $(RED_COLOR)$@ $(DEFAULT_COLOR)..."
-	mkdir $@ $(DIRS);
+	@echo "Creating $(RED_COLOR)$@ $(DEFAULT_COLOR)..."
+	@mkdir $@ $(DIRS);
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(BUILD)
 	@echo "Compiling $(CYAN_COLOR)$< $(DEFAULT_COLOR)..."

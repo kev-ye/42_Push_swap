@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/16 14:04:44 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/16 22:00:56 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int  do_action(t_stack *stacks,char *line)
         if (!ft_strcmp(line, op[i].name))
         {
             op[i].f(stacks);
-            if (stacks->flag_v)
-                print_stack(stacks->a, stacks->b); // debug
             return (1);
         }
         else if (!*line)
@@ -67,6 +65,7 @@ void    action(t_stack *stacks, int ac)
     r = 1;
     while (r > 0)
     {
+        print_stack(stacks);
         r = get_next_line(STDIN_FILENO, &line);
         if (!do_action(stacks, line))
             return ;

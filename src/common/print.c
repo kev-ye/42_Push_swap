@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:38:13 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 22:37:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/16 21:57:46 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common.h"
 
-void	print_stack(t_list *a, t_list *b)
+static void	show_stack(t_list *a, t_list *b)
 {
 	if (a == NULL && b == NULL)
 		return ;
@@ -23,9 +23,19 @@ void	print_stack(t_list *a, t_list *b)
 	else if (b)
 		ft_printf("%12c | %-12d\n", ' ', (int)b->content);
 	if (a && b)
-		print_stack(a->next, b->next);
+		show_stack(a->next, b->next);
 	else if (a)
-		print_stack(a->next, NULL);
+		show_stack(a->next, NULL);
 	else if (b)
-		print_stack(NULL, b->next);
+		show_stack(NULL, b->next);
+}
+
+void	print_stack(t_stack *stacks)
+{
+	if (stacks->flag_v != 1)
+		return ;
+	usleep(100000);
+	ft_putstr("\033[2J\033[H");
+	ft_printf("%12s | %-12s\n", "Stack A", "Stack B");
+	show_stack(stacks->a, stacks->b);
 }

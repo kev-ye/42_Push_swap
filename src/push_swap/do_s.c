@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   do_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 19:18:52 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/16 18:40:07 by kaye             ###   ########.fr       */
+/*   Created: 2021/03/16 22:02:36 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/16 22:04:05 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-int main(int ac, char **av)
+void    do_sa(t_stack *stacks)
 {
-    t_stack *stacks;
+    op_sa(stacks);
+    ft_putstr("sa\n");
+}
 
-    if (ac == 1)
-        return (0);
-    stacks = get_stack_data(ac, av);
-    if (!stacks)
-    {
-        clean_all(stacks, NULL);
-        ft_putstr("Error\n");
-        return (0);
-    }
-    if (stacks->a)
-        action(stacks, ac);
-    return (0);
+void    do_sb(t_stack *stacks)
+{
+    op_sb(stacks);
+    ft_putstr("sb\n");
+}
+
+void    do_ss(t_stack *stacks)
+{
+    op_ss(stacks);
+    ft_putstr("ss\n");
 }
