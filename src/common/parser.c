@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/16 18:32:41 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/16 23:01:14 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 	if (av[index][i] == '-' || ft_isdigit(av[index][i]))
 		++i;
 	else
-		return (void *)0;
+		quit(stacks, "ERROR\n", NULL);
 	while (av[index][i])
 	{
 		if (!ft_isdigit(av[index][i++]))
@@ -49,10 +49,7 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 	}
 	data = (void *)(intptr_t)ft_atoll(av[index]);
 	if ((long long)data > INT32_MAX || (long long)data < INT32_MIN)
-	{
-		clean_all(stacks, NULL);
-		return (void *)0;
-	}
+		quit(stacks, "ERROR\n", NULL);
 	return (data);
 }
 
@@ -91,8 +88,6 @@ t_stack	*get_stack_data(int ac, char **av)
 	while (++i < ac)
 	{
 		data = data_check(stacks, av, i);
-		if (!data)
-			return (NULL);
 		if (!stacks->a)
 		{
 			stacks->a = ft_lstnew(data);

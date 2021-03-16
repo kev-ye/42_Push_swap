@@ -30,6 +30,7 @@ typedef struct s_op
 */
 t_stack    *get_stack_data(int ac, char **av);
 void    clean_all(t_stack *stacks, char *line);
+void	quit(t_stack *stacks, char *msg, char *line);
 void	print_stack(t_stack *stacks);
 
 /*
