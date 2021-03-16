@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 21:30:58 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/16 14:04:57 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 	return (data);
 }
 
-t_stack	*get_stack_data(int ac, char **av)
+t_stack	*get_stack_data(int ac, char **av, t_stack *stacks)
 {
-	t_stack	*stacks;
+	// t_stack	*stacks;
 	void	*data;
 	int		i;
 
 	i = 0;
-	stacks = malloc(sizeof(t_stack));
-	if (!stacks)
-		return (NULL);
-	ft_bzero(stacks, sizeof(t_stack));
+	// stacks = malloc(sizeof(t_stack));
+	// if (!stacks)
+	// 	return (NULL);
+	// ft_bzero(stacks, sizeof(t_stack));
 	while (++i < ac)
 	{
 		data = data_check(stacks, av, i);

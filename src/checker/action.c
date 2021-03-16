@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 21:37:50 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/16 14:04:44 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int  do_action(t_stack *stacks,char *line)
         if (!ft_strcmp(line, op[i].name))
         {
             op[i].f(stacks);
-            print_stack(stacks->a, stacks->b); // debug
+            if (stacks->flag_v)
+                print_stack(stacks->a, stacks->b); // debug
             return (1);
         }
         else if (!*line)

@@ -10,8 +10,9 @@
 
 typedef struct s_stack
 {
-    t_list *a;
-    t_list *b;
+    t_list  *a;
+    t_list  *b;
+    int     flag_v;
 }              t_stack;
 
 typedef struct s_op
@@ -24,7 +25,8 @@ typedef struct s_op
 /*
 ** COMMON
 */
-t_stack    *get_stack_data(int ac, char **av);
+// t_stack    *get_stack_data(int ac, char **av);
+t_stack	*get_stack_data(int ac, char **av, t_stack *stacks);
 void    clean_all(t_stack *stacks, char *line);
 void    print_stack(t_list *a, t_list *b);
 
