@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:38:13 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/16 21:57:46 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/16 22:42:52 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	show_stack(t_list *a, t_list *b)
 	if (a == NULL && b == NULL)
 		return ;
 	if (a && b)
-		ft_printf("%12d | %-12d\n", (int)a->content, (int)b->content);
+		ft_printf("| %12d | %-12d |\n", (int)a->content, (int)b->content);
 	else if (a)
-		ft_printf("%12d | %-12c\n", (int)a->content, ' ');
+		ft_printf("| %12d | %-12c |\n", (int)a->content, ' ');
 	else if (b)
-		ft_printf("%12c | %-12d\n", ' ', (int)b->content);
+		ft_printf("| %12c | %-12d |\n", ' ', (int)b->content);
 	if (a && b)
 		show_stack(a->next, b->next);
 	else if (a)
@@ -36,6 +36,9 @@ void	print_stack(t_stack *stacks)
 		return ;
 	usleep(100000);
 	ft_putstr("\033[2J\033[H");
-	ft_printf("%12s | %-12s\n", "Stack A", "Stack B");
+	ft_printf("-------------------------------\n");
+	ft_printf("| %12s | %-12s |\n", "Stack A", "Stack B");
+	ft_printf("-------------------------------\n");
 	show_stack(stacks->a, stacks->b);
+	ft_printf("-------------------------------\n");
 }
