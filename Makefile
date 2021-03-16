@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/14 18:13:52 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/16 13:42:19 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,8 +87,8 @@ re: fclean all
 .PHONY: all clean fclean re
 
 $(BUILD):
-	@echo "Creating $(RED_COLOR)$@ $(DEFAULT_COLOR)..."
-	@mkdir -p $@ $(DIRS)
+	echo "Creating $(RED_COLOR)$@ $(DEFAULT_COLOR)..."
+	mkdir $@ $(DIRS);
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(BUILD)
 	@echo "Compiling $(CYAN_COLOR)$< $(DEFAULT_COLOR)..."
