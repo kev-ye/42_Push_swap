@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 09:42:24 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 18:59:05 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 20:38:08 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ static void	action(t_stack *stacks)
 	return ;
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_stack *stacks;
+	t_stack	*stacks;
 
-    if (ac <= 2)
-        return (0);
-    stacks = get_stack_data(ac, av);
-    if (!stacks)
-    {
-        clean_all(stacks, NULL);
-        ft_putstr("Error\n");
-        return (0);
-    }
+	if (ac <= 2)
+		return (0);
+	stacks = get_stack_data(ac, av);
+	if (!stacks)
+	{
+		clean_all(stacks, NULL);
+		ft_putstr("Error\n");
+		return (0);
+	}
 	stacks->median = get_median(stacks->a, stacks);
 	action(stacks);
 	return (0);

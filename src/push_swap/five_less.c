@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:48:53 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 18:55:16 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 20:31:34 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	action_for_tree_less(t_stack *stacks)
 {
-	int bigger;
+	int	bigger;
 
 	bigger = get_bigger(stacks->a);
 	if (bigger == (int)stacks->a->content)
@@ -34,16 +34,16 @@ void	action_for_tree_less(t_stack *stacks)
 			do_sa(stacks);
 }
 
-void action_for_five_less(t_stack *stacks)
+void	action_for_five_less(t_stack *stacks)
 {
-	int bigger;
-	int smaller;
+	int	bigger;
+	int	smaller;
 
 	bigger = get_bigger(stacks->a);
 	smaller = get_smaller(stacks->a);
 	while (ft_lstsize(stacks->b) != 2)
 	{
-		if ((int)stacks->a->content == bigger 
+		if ((int)stacks->a->content == bigger
 			|| (int)stacks->a->content == smaller)
 			do_pb(stacks);
 		else

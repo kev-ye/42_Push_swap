@@ -6,18 +6,17 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 17:00:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 18:51:42 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 20:17:01 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
-
-#include "common.h"
+# include "common.h"
 
 /*
 ** ACTION
 */
-void    action(t_stack *stacks, int ac);
+void	action(t_stack *stacks, int ac);
 
 #endif

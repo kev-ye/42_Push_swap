@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:49:39 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 18:54:07 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 20:38:34 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	get_bigger(t_list *a_b)
 {
-	t_list *tmp;
-	int bigger;
+	t_list	*tmp;
+	int		bigger;
 
 	tmp = a_b;
 	bigger = (int)tmp->content;
@@ -30,8 +30,8 @@ int	get_bigger(t_list *a_b)
 
 int	get_smaller(t_list *a_b)
 {
-	t_list *tmp;
-	int smaller;
+	t_list	*tmp;
+	int		smaller;
 
 	tmp = a_b;
 	smaller = (int)tmp->content;
@@ -46,9 +46,9 @@ int	get_smaller(t_list *a_b)
 
 static void	ft_sort_int_tab(int *tab, int size)
 {
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	j = 0;
@@ -72,8 +72,8 @@ static void	ft_sort_int_tab(int *tab, int size)
 
 static void	ft_lst_to_tab(int *tab, t_list *a, int size)
 {
-	int i;
-	t_list *tmp;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	tmp = a;
@@ -86,10 +86,10 @@ static void	ft_lst_to_tab(int *tab, t_list *a, int size)
 
 int	get_median(t_list *a_b, t_stack *stacks)
 {
-	int *tab;
-	int size;
-	int median;
-	int i;
+	int	*tab;
+	int	size;
+	int	median;
+	int	i;
 
 	size = ft_lstsize(a_b);
 	tab = malloc(sizeof(int) * size);

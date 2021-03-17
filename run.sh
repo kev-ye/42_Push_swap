@@ -1,1 +1,0 @@
-clang -I./libft/inc -I./inc -Llibft -lft ./src/checker.c ./src/*/*.c

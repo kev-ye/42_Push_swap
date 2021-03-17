@@ -6,15 +6,15 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 18:19:28 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 20:29:15 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common.h"
 
-static t_stack *flag_check(int ac, char **av, int *i)
+static t_stack	*flag_check(int ac, char **av, int *i)
 {
-	t_stack *stacks;
+	t_stack	*stacks;
 
 	stacks = malloc(sizeof(t_stack));
 	if (!stacks)
@@ -34,8 +34,8 @@ static t_stack *flag_check(int ac, char **av, int *i)
 
 static void	*data_check(t_stack *stacks, char **av, int index)
 {
-	void *data;
-	int i;
+	void	*data;
+	int		i;
 
 	i = 0;
 	if (av[index][i] == '-' || ft_isdigit(av[index][i]))
@@ -45,7 +45,7 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 	while (av[index][i])
 	{
 		if (!ft_isdigit(av[index][i++]))
-			return (void *)0;
+			quit(stacks, "ERROR\n", NULL);
 	}
 	data = (void *)(intptr_t)ft_atoll(av[index]);
 	if ((long long)data > INT32_MAX || (long long)data < INT32_MIN)
@@ -53,26 +53,26 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 	return (data);
 }
 
-static int    duplication_check(t_list *a)
+static int	duplication_check(t_list *a)
 {
-    t_list *tmp;
-    t_list *tmp2;
+	t_list	*tmp;
+	t_list	*tmp2;
 
-    tmp = a;
-    if (!a)
-        return (1);
-    while (tmp->next)
-    {
-        tmp2 = tmp->next;
-        while (tmp2)
-        {
-            if ((int)tmp->content == (int)tmp2->content)
-                return (0);
-            tmp2 = tmp2->next;
-        }
-        tmp = tmp->next;
-    }
-    return (1);
+	tmp = a;
+	if (!a)
+		return (1);
+	while (tmp->next)
+	{
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			if ((int)tmp->content == (int)tmp2->content)
+				return (0);
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 t_stack	*get_stack_data(int ac, char **av)

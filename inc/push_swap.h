@@ -6,14 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:27:33 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 18:59:33 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 20:17:55 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-#include "common.h"
+# include "common.h"
 
 /*
 ** OPERATION
@@ -40,8 +39,8 @@ void	action_for_hundred_less(t_stack *stacks);
 /*
 ** UTILS
 */
-int	get_bigger(t_list *a_b);
-int	get_smaller(t_list *a_b);
-int	get_median(t_list *a_b, t_stack *stacks);
+int		get_bigger(t_list *a_b);
+int		get_smaller(t_list *a_b);
+int		get_median(t_list *a_b, t_stack *stacks);
 
 #endif
