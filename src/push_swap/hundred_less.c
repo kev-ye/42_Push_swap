@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:57:45 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 19:28:07 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 19:34:40 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,7 @@ void    action_for_hundred_less(t_stack *stacks)
 	int size;
 
 	size = ft_lstsize(stacks->a);
-
-    // printf("m %d size %d\n", stacks->median, size / 2);
-    // return ;
-    // if ((size % 2) == 1)
-    //     i = 1;
-    // else
-        i = 0;
+    i = 0;
 	while (i < size / 2)
 	{
 		if ((int)stacks->a->content < stacks->median)

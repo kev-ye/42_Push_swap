@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:38:13 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 19:28:14 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/17 19:31:51 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_stack(t_stack *stacks)
 {
 	if (stacks->flag_v != 1)
 		return ;
-	usleep(100000);
+	usleep(70000);
 	ft_putstr("\033[2J\033[H");
 	ft_printf("-------------------------------\n");
 	ft_printf("| %12s | %-12s |\n", "Stack A", "Stack B");
