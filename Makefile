@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/17 19:00:11 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/18 13:56:00 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC				:= push_swap.c \
 				   do_p.c \
 				   do_r.c \
 				   do_rr.c \
+				   do_op.c \
 				   five_less.c \
 				   hundred_less.c \
 				   utils.c

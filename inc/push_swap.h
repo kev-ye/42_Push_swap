@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 18:27:33 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 20:17:55 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/18 13:56:59 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	do_rr(t_stack *stacks);
 void	do_rra(t_stack *stacks);
 void	do_rrb(t_stack *stacks);
 void	do_rrr(t_stack *stacks);
+void	do_op(t_stack *stacks, char *op_name);
 
 /*
 ** ALGO
@@ -41,6 +42,6 @@ void	action_for_hundred_less(t_stack *stacks);
 */
 int		get_bigger(t_list *a_b);
 int		get_smaller(t_list *a_b);
-int		get_median(t_list *a_b, t_stack *stacks);
+void	get_median(t_list *a_b, t_stack *stacks);
 
 #endif

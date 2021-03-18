@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_p.c                                             :+:      :+:    :+:   */
+/*   do_op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 22:04:20 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/18 13:58:47 by kaye             ###   ########.fr       */
+/*   Created: 2021/03/18 13:53:12 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/18 14:01:35 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_pa(t_stack *stacks)
+void	do_op(t_stack *stacks, char *op_name)
 {
-	op_pa(stacks);
-	if (!stacks->flag_v)
-		ft_putstr("pa\n");
-	print_stack(stacks);
-}
+	const t_op	op[OP_AMOUT] = {
+		{"sa", op_sa}, {"sb", op_sb}, {"ss", op_ss}, {"pa", do_pa},
+		{"pb", op_pb}, {"ra", op_ra}, {"rb", op_rb}, {"rr", op_rr},
+		{"rra", op_rra}, {"rrb", op_rrb}, {"rrr", op_rrr}
+	};
+	int			i;
 
-void	do_pb(t_stack *stacks)
-{
-	op_pb(stacks);
-	if (!stacks->flag_v)
-		ft_putstr("pb\n");
-	print_stack(stacks);
+	i = -1;
+	while (++i < OP_AMOUT)
+	{
+		if (!ft_strcmp(op_name, op[i].name))
+		{
+			op[i].f(stacks);
+			return ;
+		}
+		else
+			quit(stacks, "ERROR\n", NULL);
+	}
 }

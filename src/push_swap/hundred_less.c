@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:57:45 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 20:39:27 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/18 14:02:32 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ static void	in_stack_b(t_stack *stacks)
 		}
 		else if ((int)stacks->b->content == stacks->bigger)
 			do_pa(stacks);
+		else if ((int)ft_lstlast(stacks->b)->content == stacks->smaller
+			|| (int)ft_lstlast(stacks->b)->content == stacks->bigger)
+			do_rrb(stacks);
 		else if ((int)stacks->b->content > stacks->smaller
 			&& (int)stacks->b->content < stacks->bigger)
 			do_rb(stacks);

@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 20:25:05 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/18 13:52:22 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int	do_action(t_stack *stacks, char *line)
+static int	do_op(t_stack *stacks, char *line)
 {
 	const t_op	op[OP_AMOUT] = {
 		{"sa", op_sa}, {"sb", op_sb}, {"ss", op_ss}, {"pa", op_pa},
@@ -22,7 +22,7 @@ static int	do_action(t_stack *stacks, char *line)
 	int			i;
 
 	i = -1;
-	while (++i < 11)
+	while (++i < OP_AMOUT)
 	{
 		if (!ft_strcmp(line, op[i].name))
 		{
@@ -67,7 +67,7 @@ void	action(t_stack *stacks, int ac)
 	{
 		print_stack(stacks);
 		r = get_next_line(STDIN_FILENO, &line);
-		if (!do_action(stacks, line))
+		if (!do_op(stacks, line))
 			return ;
 		free(line);
 	}
