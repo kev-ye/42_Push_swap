@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/19 12:12:57 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/19 12:52:45 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC				:= push_swap.c \
 				   do_op.c \
 				   five_less.c \
 				   hundred_less.c \
+				   hundred_more.c \
 				   utils.c
 SRC_PUSH_SWAP	:= $(addprefix push_swap/, $(SRC))
 SRC				:= action.c \

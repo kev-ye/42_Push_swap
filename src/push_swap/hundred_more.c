@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hundred_less.c                                     :+:      :+:    :+:   */
+/*   hundred_more.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 18:57:45 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/19 12:50:26 by kaye             ###   ########.fr       */
+/*   Created: 2021/03/19 12:45:37 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/19 12:56:24 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void	in_stack_b(t_stack *stacks)
 
 static void	below_median(t_stack *stacks, int i, int size)
 {
+	int median;
+
 	while (i < size / 2)
 	{
 		if ((int)stacks->a->content < stacks->median)
@@ -46,6 +48,7 @@ static void	below_median(t_stack *stacks, int i, int size)
 		else
 			do_op(stacks, "ra");
 	}
+	median = get_median(stacks->b, stacks);
 }
 
 static void	above_median(t_stack *stacks, int i, int size)
@@ -60,7 +63,7 @@ static void	above_median(t_stack *stacks, int i, int size)
 	}
 }
 
-void	action_for_hundred_less(t_stack *stacks)
+void	action_for_hundred_more(t_stack *stacks)
 {
 	int	i;
 	int	size;

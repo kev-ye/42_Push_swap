@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:49:39 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/18 11:55:41 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/19 12:52:17 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,11 @@ static void	ft_lst_to_tab(int *tab, t_list *a, int size)
 	}
 }
 
-void	get_median(t_list *a_b, t_stack *stacks)
+int	get_median(t_list *a_b, t_stack *stacks)
 {
 	int	*tab;
 	int	size;
 	int	median;
-	int	i;
 
 	size = ft_lstsize(a_b);
 	tab = malloc(sizeof(int) * size);
@@ -98,7 +97,7 @@ void	get_median(t_list *a_b, t_stack *stacks)
 	ft_bzero(tab, sizeof(int) * size);
 	ft_lst_to_tab(tab, a_b, size);
 	ft_sort_int_tab(tab, size);
-	i = 0;
-	stacks->median = tab[size / 2];
+	median = tab[size / 2];
 	free(tab);
+	return (median);
 }
