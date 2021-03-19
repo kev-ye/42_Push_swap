@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:57:45 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/18 14:02:32 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/19 12:13:45 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static void	in_stack_b(t_stack *stacks)
 		stacks->smaller = get_smaller(stacks->b);
 		if ((int)stacks->b->content == stacks->smaller)
 		{
-			do_pa(stacks);
-			do_ra(stacks);
+			do_op(stacks, "pa");
+			do_op(stacks, "ra");
 		}
 		else if ((int)stacks->b->content == stacks->bigger)
-			do_pa(stacks);
+			do_op(stacks, "pa");
 		else if ((int)ft_lstlast(stacks->b)->content == stacks->smaller
 			|| (int)ft_lstlast(stacks->b)->content == stacks->bigger)
-			do_rrb(stacks);
+			do_op(stacks, "rrb");
 		else if ((int)stacks->b->content > stacks->smaller
 			&& (int)stacks->b->content < stacks->bigger)
-			do_rb(stacks);
+			do_op(stacks, "rb");
 	}
 }
 
@@ -40,11 +40,11 @@ static void	below_median(t_stack *stacks, int i, int size)
 	{
 		if ((int)stacks->a->content < stacks->median)
 		{
-			do_pb(stacks);
+			do_op(stacks, "pb");
 			++i;
 		}
 		else
-			do_ra(stacks);
+			do_op(stacks, "ra");
 	}
 }
 
@@ -54,7 +54,7 @@ static void	above_median(t_stack *stacks, int i, int size)
 	{
 		if ((int)stacks->a->content >= stacks->median)
 		{
-			do_pb(stacks);
+			do_op(stacks, "pb");
 			--i;
 		}
 	}
@@ -70,10 +70,10 @@ void	action_for_hundred_less(t_stack *stacks)
 	below_median(stacks, i, size);
 	in_stack_b(stacks);
 	while (stacks->a && (int)stacks->a->content < stacks->median)
-		do_ra(stacks);
+		do_op(stacks, "ra");
 	i = size;
 	above_median(stacks, i, size);
 	in_stack_b(stacks);
 	while (stacks->a && (int)stacks->a->content > stacks->median)
-		do_ra(stacks);
+		do_op(stacks, "ra");
 }
