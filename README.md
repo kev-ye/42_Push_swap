@@ -7,7 +7,7 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 
 ## To_do_list
 
-- [ ] parser
+- [x] parser
 - [x] checker
 - [ ] push_swap
 - [ ] norme
