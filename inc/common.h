@@ -18,6 +18,7 @@ typedef struct s_stack
 	int		big_median;
 	int		size_small;
 	int		size_bigger;
+	t_list	*median_size_regroup;
 }			t_stack;
 
 typedef struct s_op

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 12:45:37 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/20 00:28:13 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/21 14:00:45 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,36 +84,61 @@ static void	in_stack_b(t_stack *stacks)
 	int actuel_size;
 	int smaller;
 	int	push_b;
-	
+	t_list *median_size_regroup;
+	int for_size_regroup;
+
+	median_size_regroup = NULL;
 	while (stacks->b)
 	{
-		stacks->big_median = get_median(stacks->b, stacks);
+		for_size_regroup = 0;
+		stacks->small_median = get_median(stacks->b, stacks);
+		printf("- median : %d\n", stacks->small_median);
 		size = ft_lstsize(stacks->b);
 		i = size;
 		while (i > size / 2)
 		{
-			if ((int)stacks->b->content >= stacks->big_median)
+			if ((int)stacks->b->content >= stacks->small_median)
 			{
+				//printf("- - - push a : %d\n",(int)stacks->b->content);
 				do_op(stacks, "pa");
 				--i;
+				++for_size_regroup;
 			}
 			else
 				do_op(stacks, "rb");
 		}
+		if (!median_size_regroup)
+			median_size_regroup = ft_lstnew((void *)(intptr_t)for_size_regroup);
+		else
+			ft_lstadd_front(&median_size_regroup, ft_lstnew((void *)(intptr_t)for_size_regroup));
+		printf("- - size : %d\n", for_size_regroup);
 	}
+	// exit(0);
+	// while (median_size_regroup)
+	// {
+	// 	printf("%d\n", (int)median_size_regroup->content);
+	// 	median_size_regroup = median_size_regroup->next;
+	// }
+	// exit(0);
 	int j = 0;
 	int k;
-	while (j < stacks->size_small)
+	while (median_size_regroup)
 	{
-		median = (int)stacks->a->content;
-		actuel_size = stacks->size_small - j;
-		push_b = push_b_size(stacks, actuel_size, median);
-		k = 0;
-		while (k <= push_b)
+		j = 0;
+		while (j < (int)median_size_regroup->content)
 		{
 			do_op(stacks, "pb");
-			++k;
+			j++;
 		}
+		// median = (int)stacks->a->content;
+		// actuel_size = stacks->size_small - j;
+		// push_b = push_b_size(stacks, actuel_size, median);
+		// k = 0;
+		// while (k <= push_b)
+		// {
+		// 	do_op(stacks, "pb");
+		// 	++k;
+		// }
 		// while (stacks->b)
 		// {
 		// 	smaller = get_smaller(stacks->b);
@@ -134,7 +159,7 @@ static void	in_stack_b(t_stack *stacks)
 			{
 				do_op(stacks, "pa");
 				do_op(stacks, "ra");
-				++j;
+				// ++j;
 			}
 			else if ((int)stacks->b->content == stacks->bigger)
 				do_op(stacks, "pa");
@@ -145,7 +170,10 @@ static void	in_stack_b(t_stack *stacks)
 				&& (int)stacks->b->content < stacks->bigger)
 				do_op(stacks, "rb");
 		}
+		median_size_regroup = median_size_regroup->next;
 	}
+	while ((int)stacks->a->content < stacks->median)
+			do_op(stacks, "ra");
 }
 
 static void	in_stack_b2(t_stack *stacks)
@@ -156,36 +184,59 @@ static void	in_stack_b2(t_stack *stacks)
 	int actuel_size;
 	int smaller;
 	int	push_b;
-	
+	t_list *median_size_regroup;
+	int for_size_regroup;
+
+	median_size_regroup = NULL;
 	while (stacks->b)
 	{
+		for_size_regroup = 0;;
 		stacks->big_median = get_median(stacks->b, stacks);
+		//printf("- median : %d\n", stacks->big_median);
 		size = ft_lstsize(stacks->b);
 		i = size;
 		while (i > size / 2)
 		{
 			if ((int)stacks->b->content >= stacks->big_median)
 			{
+				printf("- - - push a : %d\n",(int)stacks->b->content);
 				do_op(stacks, "pa");
 				--i;
 			}
 			else
 				do_op(stacks, "rb");
 		}
+		if (!median_size_regroup)
+			median_size_regroup = ft_lstnew((void *)(intptr_t)for_size_regroup);
+		else
+			ft_lstadd_front(&median_size_regroup, ft_lstnew((void *)(intptr_t)for_size_regroup));
 	}
+	// while (median_size_regroup)
+	// {
+	// 	printf("%d\n", (int)median_size_regroup->content);
+	// 	median_size_regroup = median_size_regroup->next;
+	// }
+	exit(0);
 	int j = 0;
 	int k;
-	while (j < stacks->size_bigger)
+	while (median_size_regroup)
 	{
-		median = (int)stacks->a->content;
-		actuel_size = stacks->size_small - j;
-		push_b = push_b_size(stacks, actuel_size, median);
-		k = 0;
-		while (k <= push_b)
+		j = 0;
+		while (j <= (int)median_size_regroup->content)
 		{
 			do_op(stacks, "pb");
-			++k;
+			j++;
 		}
+		// exit(0);
+		// median = (int)stacks->a->content;
+		// actuel_size = stacks->size_small - j;
+		// push_b = push_b_size(stacks, actuel_size, median);
+		// k = 0;
+		// while (k <= push_b)
+		// {
+		// 	do_op(stacks, "pb");
+		// 	++k;
+		// }
 		// while (stacks->b)
 		// {
 		// 	smaller = get_smaller(stacks->b);
@@ -206,7 +257,7 @@ static void	in_stack_b2(t_stack *stacks)
 			{
 				do_op(stacks, "pa");
 				do_op(stacks, "ra");
-				++j;
+				// ++j;
 			}
 			else if ((int)stacks->b->content == stacks->bigger)
 				do_op(stacks, "pa");
@@ -217,7 +268,10 @@ static void	in_stack_b2(t_stack *stacks)
 				&& (int)stacks->b->content < stacks->bigger)
 				do_op(stacks, "rb");
 		}
+		median_size_regroup = median_size_regroup->next;
 	}
+	while ((int)stacks->a->content > stacks->median)
+			do_op(stacks, "ra");
 }
 
 static void	below_median(t_stack *stacks, int i, int size)
@@ -257,6 +311,7 @@ void	action_for_hundred_more(t_stack *stacks)
 	i = 0;
 	below_median(stacks, i, size);
 	in_stack_b(stacks);
+	exit(0);
 	i = size;
 	above_median(stacks, i, size);
 	in_stack_b2(stacks);
