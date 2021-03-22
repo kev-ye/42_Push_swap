@@ -14,8 +14,6 @@ typedef struct s_stack
 	int		bigger;
 	int		smaller;
 	int		median_a;
-	// int		small_median;
-	// int		big_median;
 	int		median_b;
 	int		size_small;
 	int		size_bigger;
