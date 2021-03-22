@@ -13,12 +13,13 @@ typedef struct s_stack
 	int		flag_v;
 	int		bigger;
 	int		smaller;
-	int		median;
-	int		small_median;
-	int		big_median;
+	int		median_a;
+	// int		small_median;
+	// int		big_median;
+	int		median_b;
 	int		size_small;
 	int		size_bigger;
-	t_list	*median_size_regroup;
+	t_list	*split_size;
 }			t_stack;
 
 typedef struct s_op

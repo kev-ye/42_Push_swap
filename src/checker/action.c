@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/18 13:52:22 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/22 10:14:16 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	action(t_stack *stacks, int ac)
 		free(line);
 	}
 	if (is_sorted(stacks, size))
-		ft_putstr("OK\n");
+		ft_putstr("\033[1;32mOK\033[0m\n");
 	else
-		ft_putstr("KO\n");
+		ft_putstr("\033[1;31mKO\033[0m\n");
 }
