@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 09:42:24 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/22 12:24:34 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 18:44:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	action(t_stack *stacks)
 	else if (ft_lstsize(stacks->a) <= 5)
 		action_for_five_less(stacks);
 	else
-		action_for_hundred(stacks);
+		action_for_hundred_more(stacks);
 	return ;
 }
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 		ft_putstr("Error\n");
 		return (0);
 	}
-	stacks->median_a = get_median(stacks->a, stacks);
+	stacks->median_a = get_median(stacks->a, stacks, ft_lstsize(stacks->a));
 	action(stacks);
 	return (0);
 }

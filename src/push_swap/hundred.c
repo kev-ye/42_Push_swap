@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 12:45:37 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/22 12:38:16 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 18:54:26 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	above_median(t_stack *stacks, int i, int size)
 	stacks->size_bigger = ft_lstsize(stacks->b);
 }
 
-void	action_for_hundred(t_stack *stacks)
+void	action_for_hundred_more(t_stack *stacks)
 {
 	int	i;
 	int	size;
