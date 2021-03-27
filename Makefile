@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/27 19:18:02 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/27 20:12:26 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,10 +71,10 @@ CYAN_COLOR 		= \033[1;36m
 $(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(OBJ_CHECKER) $(OBJ_COMMON)
 	@$(MAKE) -C $(LFT_DIR)
 	@echo "Creating $(RED_COLOR) $(PUSH_SWAP) $(DEFAULT_COLOR)..."
-	@$(CC) $(CFLAG) $(IFLAGS) $(LFLAGS) $(OBJ_PUSH_SWAP) $(OBJ_COMMON) -o $(PUSH_SWAP)
+	@$(CC) $(CFLAG) $(IFLAGS) $(LFLAGS) $(OBJ_COMMON) $(OBJ_PUSH_SWAP) -o $(PUSH_SWAP)
 	@echo "$(GREEN_COLOR)Compilation $(YELLOW_COLOR)of $(RED_COLOR)$(PUSH_SWAP) $(BLUE_COLOR)done$(DEFAULT_COLOR)"
 	@echo "Creating $(RED_COLOR) $(CHECKER) $(DEFAULT_COLOR)..."
-	@$(CC) $(CFLAG) $(IFLAGS) $(LFLAGS) $(OBJ_CHECKER) $(OBJ_COMMON) -o $(CHECKER)
+	@$(CC) $(CFLAG) $(IFLAGS) $(LFLAGS) $(OBJ_COMMON) $(OBJ_CHECKER) -o $(CHECKER)
 	@echo "$(GREEN_COLOR)Compilation $(YELLOW_COLOR)of $(RED_COLOR)$(CHECKER) $(BLUE_COLOR)done$(DEFAULT_COLOR)"
 
 all: $(PUSH_SWAP)
