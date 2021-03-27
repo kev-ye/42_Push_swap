@@ -6,11 +6,12 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 09:42:24 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 18:44:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 21:51:56 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static void	action(t_stack *stacks)
 {
@@ -38,5 +39,6 @@ int	main(int ac, char **av)
 	}
 	stacks->median_a = get_median(stacks->a, stacks, ft_lstsize(stacks->a));
 	action(stacks);
+	clean_all(stacks, NULL);
 	return (0);
 }

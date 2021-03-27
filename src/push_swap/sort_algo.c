@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:14:05 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 19:54:07 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 21:51:34 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,26 @@ static void	median_split_b(t_stack *stacks, t_list **split_size)
 	int	size;
 	int	i;
 
-	if (!stacks->b)
-		return ;
-	count = 0;
-	stacks->median_b = get_median(stacks->b, stacks, ft_lstsize(stacks->b));
-	size = ft_lstsize(stacks->b);
-	i = size;
-	while (i > size / 2)
-		if ((int)stacks->b->content >= stacks->median_b)
-		{
-			do_op(stacks, "pa");
-			--i;
-			++count;
-		}
+	while (stacks->b)
+	{
+		count = 0;
+		stacks->median_b = get_median(stacks->b, stacks, ft_lstsize(stacks->b));
+		size = ft_lstsize(stacks->b);
+		i = size;
+		while (i > size / 2)
+			if ((int)stacks->b->content >= stacks->median_b)
+			{
+				do_op(stacks, "pa");
+				--i;
+				++count;
+			}
+			else
+				do_op(stacks, "rb");
+		if (!split_size)
+			*split_size = ft_lstnew((void *)(intptr_t)count);
 		else
-			do_op(stacks, "rb");
-	if (!split_size)
-		*split_size = ft_lstnew((void *)(intptr_t)count);
-	else
-		ft_lstadd_front(&*split_size, ft_lstnew((void *)(intptr_t)count));
-	median_split_b(stacks, split_size);
+			ft_lstadd_front(&*split_size, ft_lstnew((void *)(intptr_t)count));
+	}
 }
 
 static void	split_and_sort(t_stack *stacks, int i, int r_a, int median)
@@ -100,15 +100,16 @@ void	stack_b_below_median_a(t_stack *stacks)
 	int r_a;
 	int i;
 	int median;
-	int	first_a;
+	t_list *tmp;
 
 	stacks->split_size = NULL;
 	median_split_b(stacks, &stacks->split_size);
-	while (stacks->split_size)
+	tmp = stacks->split_size;
+	while (tmp)
 	{
-		if ((int)stacks->split_size->content == 1)
+		if ((int)tmp->content == 1)
 			do_op(stacks, "ra");
-		else if ((int)stacks->split_size->content == 2)
+		else if ((int)tmp->content == 2)
 		{
 			if ((int)stacks->a->content > (int)stacks->a->next->content)
 				do_op(stacks, "sa");
@@ -117,7 +118,7 @@ void	stack_b_below_median_a(t_stack *stacks)
 		}
 		else
 			split_and_sort(stacks, i, r_a, median);
-		stacks->split_size = stacks->split_size->next;
+		tmp = tmp->next;
 	}
 }
 

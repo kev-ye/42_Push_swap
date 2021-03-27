@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:38:57 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 20:27:15 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 21:05:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	clean_all(t_stack *stacks, char *line)
 		free(line);
 	if (stacks)
 	{
+		if (stacks->split_size)
+			ft_lstclear(&stacks->split_size, NULL);
 		ft_lstclear(&stacks->a, NULL);
 		ft_lstclear(&stacks->b, NULL);
 	}
