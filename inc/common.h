@@ -2,7 +2,7 @@
 # define COMMON_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> // delete
+# include <stdint.h>
 # include "libft.h"
 # define OP_AMOUT 11
 
