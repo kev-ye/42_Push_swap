@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/17 20:29:15 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 22:46:03 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 	int		i;
 
 	i = 0;
-	if (av[index][i] == '-' || ft_isdigit(av[index][i]))
+	if ((av[index][i] == '-' && ft_isdigit(av[index][i + 1]))
+		|| ft_isdigit(av[index][i]))
 		++i;
 	else
 		quit(stacks, "ERROR\n", NULL);
