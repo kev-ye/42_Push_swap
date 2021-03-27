@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:14:05 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 19:21:52 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 19:54:07 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,26 @@ static void	median_split_b(t_stack *stacks, t_list **split_size)
 	int	size;
 	int	i;
 
-	while (stacks->b)
-	{
-		count = 0;
-		stacks->median_b = get_median(stacks->b, stacks, ft_lstsize(stacks->b));
-		size = ft_lstsize(stacks->b);
-		i = size;
-		while (i > size / 2)
-			if ((int)stacks->b->content >= stacks->median_b)
-			{
-				do_op(stacks, "pa");
-				--i;
-				++count;
-			}
-			else
-				do_op(stacks, "rb");
-		if (!split_size)
-			*split_size = ft_lstnew((void *)(intptr_t)count);
+	if (!stacks->b)
+		return ;
+	count = 0;
+	stacks->median_b = get_median(stacks->b, stacks, ft_lstsize(stacks->b));
+	size = ft_lstsize(stacks->b);
+	i = size;
+	while (i > size / 2)
+		if ((int)stacks->b->content >= stacks->median_b)
+		{
+			do_op(stacks, "pa");
+			--i;
+			++count;
+		}
 		else
-			ft_lstadd_front(&*split_size, ft_lstnew((void *)(intptr_t)count));
-	}
+			do_op(stacks, "rb");
+	if (!split_size)
+		*split_size = ft_lstnew((void *)(intptr_t)count);
+	else
+		ft_lstadd_front(&*split_size, ft_lstnew((void *)(intptr_t)count));
+	median_split_b(stacks, split_size);
 }
 
 static void	split_and_sort(t_stack *stacks, int i, int r_a, int median)
