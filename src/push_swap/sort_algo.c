@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:14:05 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 22:09:21 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/27 22:22:24 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ static void	sort_stack_b_to_a(t_stack *stacks)
 		do_op(stacks, "ra");
 }
 
-static void	median_split_b(t_stack *stacks, t_list **split_size)
+static void	median_split_b(t_stack *stacks)
 {
 	int	count;
 	int	size;
 	int	i;
 
+	stacks->split_size = NULL;
 	while (stacks->b)
 	{
 		count = 0;
@@ -60,10 +61,7 @@ static void	median_split_b(t_stack *stacks, t_list **split_size)
 			}
 			else
 				do_op(stacks, "rb");
-		if (!split_size)
-			*split_size = ft_lstnew((void *)(intptr_t)count);
-		else
-			ft_lstadd_front(&*split_size, ft_lstnew((void *)(intptr_t)count));
+		ft_lstadd_front(&stacks->split_size, ft_lstnew((void *)(intptr_t)count));
 	}
 }
 
@@ -100,8 +98,7 @@ void	stack_b_below_median_a(t_stack *stacks)
 	int median;
 	t_list *tmp;
 
-	stacks->split_size = NULL;
-	median_split_b(stacks, &stacks->split_size);
+	median_split_b(stacks);
 	tmp = stacks->split_size;
 	while (tmp)
 	{
@@ -118,6 +115,7 @@ void	stack_b_below_median_a(t_stack *stacks)
 			split_and_sort(stacks, r_a, median, tmp);
 		tmp = tmp->next;
 	}
+	ft_lstclear(&stacks->split_size, NULL);
 }
 
 void	stack_b_above_median_a(t_stack *stacks)
@@ -126,8 +124,7 @@ void	stack_b_above_median_a(t_stack *stacks)
 	int median;
 	t_list *tmp;
 
-	stacks->split_size = NULL;
-	median_split_b(stacks, &stacks->split_size);
+	median_split_b(stacks);
 	tmp = stacks->split_size;
 	while (tmp)
 	{
