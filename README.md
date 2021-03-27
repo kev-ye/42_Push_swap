@@ -9,7 +9,7 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 
 - [x] parser
 - [x] checker
-- [ ] push_swap
+- [x] push_swap
 - [ ] norme
 
 ## Notes
