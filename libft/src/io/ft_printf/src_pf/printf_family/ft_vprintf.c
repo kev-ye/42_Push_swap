@@ -1,40 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_pf.c                                      :+:      :+:    :+:   */
+/*   ft_vprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 16:56:43 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 22:27:45 by kaye             ###   ########.fr       */
+/*   Created: 2020/11/25 21:20:53 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/28 19:38:20 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf_utils.h"
 
-int	ft_putchar_pf(char c)
+int		ft_vprintf(const char *format, va_list arg)
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-size_t	ft_putstr_pf(char *s)
-{
-	size_t	len;
-
-	if (!s)
-		return (0);
-	len = ft_strlen(s);
-	write(1, s, len);
-	return (len);
-}
-
-int	ft_putstr_prec_pf(char *s, int prec)
-{
-	int	count;
-
-	count = 0;
-	while (s[count] && count < prec)
-		(void)ft_putchar_pf(s[count++]);
-	return (count);
+	return (ft_process(format, arg));
 }

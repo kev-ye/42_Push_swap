@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_uint.c                                    :+:      :+:    :+:   */
+/*   ft_parse_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/14 20:44:55 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 22:27:39 by kaye             ###   ########.fr       */
+/*   Created: 2020/11/14 19:56:18 by kaye              #+#    #+#             */
+/*   Updated: 2021/03/28 18:16:30 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf_utils.h"
 
 static int	with_prec(char *conv, int prec)
 {
@@ -20,12 +20,15 @@ static int	with_prec(char *conv, int prec)
 	count = 0;
 	len = ft_strlen(conv);
 	if (prec >= 0)
+	{
+		count += ft_putstr_pf("0x");
 		count += ft_parse_width(prec, len, 1);
+	}
 	count += ft_putstr_pf(conv);
 	return (count);
 }
 
-static int	parse_uint(char *conv, t_flag flag)
+static int	parse_pointer(char *conv, t_flag flag)
 {
 	int		count;
 	size_t	len;
@@ -37,27 +40,37 @@ static int	parse_uint(char *conv, t_flag flag)
 	if (flag.minus)
 		count += with_prec(conv, flag.prec);
 	if (flag.prec >= 0)
-		count += ft_parse_width(flag.width, flag.prec, 0);
+		count += ft_parse_width(flag.width, flag.prec + 2, 0);
 	else
-		count += ft_parse_width(flag.width, len, flag.zero);
+	{
+		count += ft_parse_width(flag.width, len + 2, flag.zero);
+		if (!flag.zero && !flag.minus)
+			count += ft_putstr_pf("0x");
+	}
 	if (!flag.minus)
 		count += with_prec(conv, flag.prec);
 	return (count);
 }
 
-int	ft_parse_uint(t_ull ui, t_flag flag)
+int	ft_parse_pointer(void *p, t_flag flag)
 {
 	char	*conv;
 	int		count;
 
 	count = 0;
-	if (ui == 0 && flag.prec == 0)
+	if ((unsigned long long)p == 0 && flag.prec == 0)
 	{
-		count += ft_parse_width(flag.width, 0, 0);
+		if (flag.minus)
+			count += ft_putstr_pf("0x");
+		count += ft_parse_width(flag.width, 2, 0);
+		if (!flag.minus)
+			count += ft_putstr_pf("0x");
 		return (count);
 	}
-	conv = ft_ulltoa_base_pf(ui, 10, 0);
-	count += parse_uint(conv, flag);
+	if ((flag.zero || flag.minus) && flag.prec < 0)
+		count += ft_putstr_pf("0x");
+	conv = ft_ulltoa_base_pf((unsigned long long)p, 16, 0);
+	count += parse_pointer(conv, flag);
 	free(conv);
 	return (count);
 }

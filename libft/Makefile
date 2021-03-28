@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 16:59:07 by kaye              #+#    #+#              #
-#    Updated: 2021/03/22 12:34:34 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/28 19:42:34 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,21 +18,23 @@ IFLAGS 	= -I./inc
 
 # DIRECTORIES
 
-BUILD	:= .build
-INC_DIR	:= inc
-SRC_DIR	:= src
-OBJ_DIR	:= $(BUILD)/obj
-SUB_DIR	:= ctype \
-		   memory \
-		   string \
-		   io \
-		   list	\
-		   utile
-DIRS	:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
+BUILD		:= .build
+INC_DIR		:= inc
+SRC_DIR		:= src
+OBJ_DIR		:= $(BUILD)/obj
+SUB_DIR		:= ctype \
+			   memory \
+			   string \
+			   io \
+			   list \
+			   utile
+PTF_DIR		:= $(SRC_DIR)/io/ft_printf
+DIRS		:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 
 # FILES
 
 NAME 	:= libft.a
+PTF		:= libftprintf.a
 SUB_SRC := ft_isalpha.c \
 		   ft_isdigit.c \
 		   ft_isalnum.c \
@@ -59,7 +61,7 @@ SUB_SRC := ft_strlen.c \
 		   ft_strlcat.c \
 		   ft_strnstr.c \
 		   ft_atoi.c \
-		   ft_strdup.c \
+	 	   ft_strdup.c \
 		   ft_substr.c \
 		   ft_strjoin.c \
 		   ft_strtrim.c \
@@ -74,7 +76,7 @@ SUB_SRC := ft_strlen.c \
 		   ft_strcat.c \
 		   ft_atoll.c
 SRC 	+= $(addprefix string/, $(SUB_SRC))
-SUB_SRC := ft_putchar_fd.c \
+SUB_SRC	:= ft_putchar_fd.c \
 		   ft_putstr_fd.c \
 		   ft_putendl_fd.c \
 		   ft_putnbr_fd.c \
@@ -94,25 +96,7 @@ SUB_SRC	:= ft_lstnew.c \
 		   ft_lstmap.c
 SRC		+= $(addprefix list/, $(SUB_SRC))
 SUB_SRC := ft_intlen_base.c \
-		   get_next_line_utils.c \
-		   ft_vprintf.c \
-		   ft_convert_utils.c \
-		   ft_convert.c \
-		   ft_parse_char.c \
-		   ft_parse_check.c \
-		   ft_parse_flag_plus.c \
-		   ft_parse_flag.c \
-		   ft_parse_hex.c \
-		   ft_parse_int_p.c \
-		   ft_parse_int.c \
-		   ft_parse_octal.c \
-		   ft_parse_pointer.c \
-		   ft_parse_spec.c \
-		   ft_parse_string.c \
-		   ft_parse_uint.c \
-		   ft_parse.c \
-		   ft_process.c \
-		   ft_utils_pf.c
+		   get_next_line_utils.c
 SRC		+= $(addprefix utile/, $(SUB_SRC))
 OBJ 	:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
@@ -131,6 +115,9 @@ WHITE_COLOR 	= \033[1;107m
 # MAKEFILE
 
 $(NAME): $(OBJ)
+	@echo "Creating $(RED_COLOR) $(FT_PRINTF) $(DEFAULT_COLOR)..."
+	@$(MAKE) -C $(PTF_DIR)
+	@cp $(PTF_DIR)/$(PTF) $(NAME)
 	@echo "Creating $(RED_COLOR)$@ $(DEFAULT_COLOR)..."
 	@ar -rcs $@ $^
 	@echo "$(GREEN_COLOR)Compilation $(YELLOW_COLOR)of $(RED_COLOR)$@ $(BLUE_COLOR)done$(DEFAULT_COLOR)"
@@ -138,9 +125,11 @@ $(NAME): $(OBJ)
 all: $(NAME)
 
 clean:
+		$(MAKE) -C $(PTF_DIR) clean
 		rm -Rf $(BUILD)
 
 fclean: clean
+		$(MAKE) -C $(PTF_DIR) fclean
 		rm -Rf $(NAME)
 
 re: fclean all
