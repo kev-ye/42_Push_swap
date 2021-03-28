@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 09:42:24 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 20:40:25 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 22:19:14 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_lst_is_sorted(t_list *lst)
 static void	action(t_stack *stacks)
 {
 	if (ft_lst_is_sorted(stacks->a))
-		return ;
+		quit_success(stacks, NULL, NULL);
 	if (ft_lstsize(stacks->a) <= 3)
 		action_for_tree_less(stacks);
 	else if (ft_lstsize(stacks->a) <= 5)
@@ -45,15 +45,11 @@ int	main(int ac, char **av)
 	t_stack	*stacks;
 
 	stacks = get_stack_data(ac, av);
-	if (stacks && !stacks->flag_v && ac <= 2)
-		quit(stacks, NULL, NULL);
-	else if (stacks && stacks->flag_v && ac <= 3)
-		quit(stacks, NULL, NULL);
 	if (!stacks)
-		quit(stacks, "Error\n", NULL);
+		quit_error(stacks, NULL);
 	stacks->median_a = get_median(stacks->a, stacks, ft_lstsize(stacks->a));
 	stacks->max = get_bigger(stacks->a);
 	action(stacks);
-	clean_all(stacks, NULL);
+	quit_success(stacks, NULL, NULL);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 20:51:14 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 22:21:54 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ static void	*data_check(t_stack *stacks, char **av, int index)
 		|| ft_isdigit(av[index][i]))
 		++i;
 	else
-		quit(stacks, "Error\n", NULL);
+		quit_error(stacks, NULL);
 	while (av[index][i])
 	{
 		if (!ft_isdigit(av[index][i++]))
-			quit(stacks, "Error\n", NULL);
+			quit_error(stacks, NULL);
 	}
 	data = (void *)(intptr_t)ft_atoll(av[index]);
 	if ((long long)data > INT32_MAX || (long long)data < INT32_MIN)
-		quit(stacks, "Error\n", NULL);
+		quit_error(stacks, NULL);
 	return (data);
 }
 
@@ -88,6 +88,8 @@ t_stack	*get_stack_data(int ac, char **av)
 	stacks = flag_check(ac, av, &i);
 	if (!stacks)
 		return (NULL);
+	if ((i + 1) == ac)
+		quit_success(stacks, NULL, NULL);
 	while (++i < ac)
 	{
 		data = data_check(stacks, av, i);
@@ -101,6 +103,6 @@ t_stack	*get_stack_data(int ac, char **av)
 			ft_lstadd_back(&stacks->a, ft_lstnew(data));
 	}
 	if (!duplication_check(stacks->a))
-		quit(stacks, "Error\n", NULL);
+		quit_error(stacks, NULL);
 	return (stacks);
 }

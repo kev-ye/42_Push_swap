@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 20:38:57 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 21:05:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 22:17:41 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common.h"
 
-void	clean_all(t_stack *stacks, char *line)
+static void	clean_all(t_stack *stacks, char *line)
 {
 	if (line)
 		free(line);
@@ -27,10 +27,17 @@ void	clean_all(t_stack *stacks, char *line)
 	stacks = NULL;
 }
 
-void	quit(t_stack *stacks, char *msg, char *line)
+void	quit_error(t_stack *stacks, char *line)
+{
+	clean_all(stacks, line);
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+void	quit_success(t_stack *stacks, char *msg, char *line)
 {
 	clean_all(stacks, line);
 	if (msg)
 		ft_putstr(msg);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 20:43:39 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 22:16:48 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	do_op(t_stack *stacks, char *line, int r)
 			return (1);
 		}
 		else if (!*line && r != 0)
-			quit(stacks, "Error\n", line);
+			quit_error(stacks, NULL);
 		else if (r == 0)
 			return (1);
 	}
@@ -51,7 +51,6 @@ static int	is_sorted(t_stack *stacks, int size)
 		else
 			return (0);
 	}
-	clean_all(stacks, NULL);
 	return (1);
 }
 
@@ -68,11 +67,11 @@ void	action(t_stack *stacks, int ac)
 		show_stacks_option(stacks);
 		r = get_next_line(STDIN_FILENO, &line);
 		if (!do_op(stacks, line, r))
-			quit(stacks, "Error\n", line);
+			quit_error(stacks, NULL);
 		free(line);
 	}
 	if (is_sorted(stacks, size))
-		ft_putstr(GREEN"OK\n"NONE);
+		quit_success(stacks, GREEN"OK\n"NONE, NULL);
 	else
-		ft_putstr(RED"KO\n"NONE);
+		quit_success(stacks, RED"KO\n"NONE, NULL);
 }
