@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:49:39 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 16:43:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 20:43:01 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	get_median(t_list *a_b, t_stack *stacks, int size)
 
 	tab = malloc(sizeof(int) * size);
 	if (!tab)
-		quit(stacks, "ERROR\n", NULL);
+		quit(stacks, "Error\n", NULL);
 	ft_bzero(tab, sizeof(int) * size);
 	ft_lst_to_tab(tab, a_b, size);
 	ft_sort_int_tab(tab, size);
