@@ -6,11 +6,11 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 18:49:39 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 16:54:13 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:43:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "common.h"
 
 int	get_bigger(t_list *a_b)
 {

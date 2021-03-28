@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:18:52 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 19:57:14 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:54:22 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	main(int ac, char **av)
 	if (!stacks)
 		quit(stacks, "ERROR\n", NULL);
 	if (stacks->a)
+	{
+		stacks->max = get_bigger(stacks->a);
 		action(stacks, ac);
+	}
 	return (0);
 }

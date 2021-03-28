@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 13:53:12 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/19 12:13:55 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:17:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	do_op(t_stack *stacks, char *op_name)
 				ft_putstr(op_name);
 				ft_putchar('\n');
 			}
-			print_stack(stacks);
+			option_v(stacks);
 			return ;
 		}
 	}

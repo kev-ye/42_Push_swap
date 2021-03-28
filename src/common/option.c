@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   option.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:38:13 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 18:55:09 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:37:50 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	show_stack(t_list *a, t_list *b)
 		show_stack(NULL, b->next);
 }
 
-void	print_stack(t_stack *stacks)
+void	option_v(t_stack *stacks)
 {
 	if (stacks->flag_v != 1)
 		return ;
@@ -41,4 +41,13 @@ void	print_stack(t_stack *stacks)
 	ft_printf("-------------------------------\n");
 	show_stack(stacks->a, stacks->b);
 	ft_printf("-------------------------------\n");
+}
+
+void	option_b(t_stack *stacks)
+{
+	int max;
+
+	if (stacks->flag_b != 1)
+		return ;
+	usleep(50000);
 }

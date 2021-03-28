@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 09:42:24 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 22:44:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:39:10 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	stacks->median_a = get_median(stacks->a, stacks, ft_lstsize(stacks->a));
+	stacks->max = get_bigger(stacks->a);
 	action(stacks);
 	clean_all(stacks, NULL);
 	return (0);

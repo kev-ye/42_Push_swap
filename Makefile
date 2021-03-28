@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/12 18:48:36 by kaye              #+#    #+#              #
-#    Updated: 2021/03/27 20:59:32 by kaye             ###   ########.fr        #
+#    Updated: 2021/03/28 16:45:37 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC				:= push_swap.c \
 				   do_op.c \
 				   five_less.c \
 				   hundred.c \
-				   utils.c \
 				   sort_algo.c
 SRC_PUSH_SWAP	:= $(addprefix push_swap/, $(SRC))
 SRC				:= action.c \
@@ -49,7 +48,8 @@ SRC				:= free.c \
 				   op_rr.c \
 				   op_s.c \
 				   parser.c \
-				   print.c
+				   utils.c \
+				   option.c
 SRC_COMMON		:= $(addprefix common/, $(SRC))
 OBJ_PUSH_SWAP	:= $(SRC_PUSH_SWAP:%.c=$(OBJ_DIR)/%.o)
 OBJ_CHECKER		:= $(SRC_CHECKER:%.c=$(OBJ_DIR)/%.o)
