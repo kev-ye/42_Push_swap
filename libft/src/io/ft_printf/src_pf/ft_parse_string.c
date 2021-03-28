@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 19:40:53 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 18:16:35 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 19:59:19 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 static int	with_prec(char *s, int prec)
 {
 	int		count;
-	size_t	len;
 
 	count = 0;
-	len = ft_strlen(s);
 	if (prec >= 0)
 		count += ft_putstr_prec_pf(s, prec);
 	else
