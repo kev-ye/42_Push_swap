@@ -6,12 +6,12 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 12:45:37 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 20:11:13 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 22:33:40 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 static void	below_median(t_stack *stacks, int i, int size)
 {
 	while (i < size / 2)
