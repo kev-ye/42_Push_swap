@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:18:52 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 22:16:54 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 22:26:24 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	main(int ac, char **av)
 {
 	t_stack	*stacks;
 
-	if (ac == 1)
-		return (0);
 	stacks = get_stack_data(ac, av);
 	if (!stacks)
 		quit_error(stacks, NULL);
