@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:58:55 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/09 19:53:13 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 20:11:48 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*ft_strrchr(const char *s, int c)
 	len = ft_strlen(s) + 1;
 	while (len--)
 		if (s[len] == (char)c)
-			return ((char*)(s + len));
+			return ((char *)(s + len));
 	return (NULL);
 }

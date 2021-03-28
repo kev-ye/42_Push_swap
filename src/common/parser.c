@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 16:58:51 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 20:38:05 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	duplication_check(t_list *a)
 	tmp = a;
 	if (!a)
 		return (1);
-	while (tmp->next)
+	while (tmp && tmp->next)
 	{
 		tmp2 = tmp->next;
 		while (tmp2)

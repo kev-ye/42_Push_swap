@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:38:13 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 18:02:08 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 20:11:01 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	option_v(t_stack *stacks)
 
 static void	show_stack_b(t_stack *stacks, t_list *a, t_list *b)
 {
-	int b_a;
-	int b_b;
+	int	b_a;
+	int	b_b;
 
 	if (a == NULL && b == NULL)
 		return ;
@@ -72,7 +72,7 @@ static void	show_stack_b(t_stack *stacks, t_list *a, t_list *b)
 
 static void	option_b(t_stack *stacks)
 {
-	int max;
+	int	max;
 
 	if (stacks->flag_b != 1)
 		return ;

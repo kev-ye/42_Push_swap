@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 17:14:05 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 22:22:24 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 20:18:27 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	sort_stack_b_to_a(t_stack *stacks)
 {
-	int first_a;
+	int	first_a;
 
 	first_a = (int)stacks->a->content;
 	while (stacks->b)
@@ -45,14 +45,15 @@ static void	median_split_b(t_stack *stacks)
 	int	size;
 	int	i;
 
-	stacks->split_size = NULL;
 	while (stacks->b)
 	{
 		count = 0;
-		stacks->median_b = get_median(stacks->b, stacks, ft_lstsize(stacks->b));
+		stacks->median_b = get_median(stacks->b, stacks,
+				ft_lstsize(stacks->b));
 		size = ft_lstsize(stacks->b);
 		i = size;
 		while (i > size / 2)
+		{
 			if ((int)stacks->b->content >= stacks->median_b)
 			{
 				do_op(stacks, "pa");
@@ -61,13 +62,19 @@ static void	median_split_b(t_stack *stacks)
 			}
 			else
 				do_op(stacks, "rb");
-		ft_lstadd_front(&stacks->split_size, ft_lstnew((void *)(intptr_t)count));
+		}
+		ft_lstadd_front(&stacks->split_size,
+			ft_lstnew((void *)(intptr_t)count));
 	}
 }
 
-static void	split_and_sort(t_stack *stacks, int r_a, int median, t_list *split_size)
+static void	split_and_sort(
+	t_stack *stacks,
+	int r_a,
+	int median,
+	t_list *split_size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	r_a = 0;
@@ -94,10 +101,11 @@ static void	split_and_sort(t_stack *stacks, int r_a, int median, t_list *split_s
 
 void	stack_b_below_median_a(t_stack *stacks)
 {
-	int r_a;
-	int median;
-	t_list *tmp;
+	int		r_a;
+	int		median;
+	t_list	*tmp;
 
+	stacks->split_size = NULL;
 	median_split_b(stacks);
 	tmp = stacks->split_size;
 	while (tmp)
@@ -120,10 +128,11 @@ void	stack_b_below_median_a(t_stack *stacks)
 
 void	stack_b_above_median_a(t_stack *stacks)
 {
-	int r_a;
-	int median;
-	t_list *tmp;
+	int		r_a;
+	int		median;
+	t_list	*tmp;
 
+	stacks->split_size = NULL;
 	median_split_b(stacks);
 	tmp = stacks->split_size;
 	while (tmp)
