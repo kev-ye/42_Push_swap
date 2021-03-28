@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 20:43:12 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 20:51:14 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ t_stack	*get_stack_data(int ac, char **av)
 			ft_lstadd_back(&stacks->a, ft_lstnew(data));
 	}
 	if (!duplication_check(stacks->a))
-		return (NULL);
+		quit(stacks, "Error\n", NULL);
 	return (stacks);
 }
