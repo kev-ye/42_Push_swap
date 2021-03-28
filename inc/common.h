@@ -34,7 +34,7 @@ typedef struct s_op
 t_stack	*get_stack_data(int ac, char **av);
 void	clean_all(t_stack *stacks, char *line);
 void	quit(t_stack *stacks, char *msg, char *line);
-void	option_v(t_stack *stacks);
+void	show_stacks_option(t_stack *stacks);
 
 /*
 ** COMMON - OPERATION

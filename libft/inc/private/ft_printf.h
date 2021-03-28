@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 22:34:03 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/14 22:25:07 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 17:42:29 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,34 @@
 # define TYPE_H 0x10
 # define TYPE_L 0x40
 # define TYPE_LL 0x80
+
+/*
+** NORMAL
+*/
+# define BLACK "\033[0;30m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
+
+/*
+** BACKGROUND
+*/
+# define F_BLACK "\033[40m"
+# define F_RED "\033[41m"
+# define F_GREEN "\033[42m"
+# define F_YELLOW "\033[43m"
+# define F_BLUE "\033[44m"
+# define F_PURPLE "\033[45m"
+# define F_CYAN "\033[46m"
+
+/*
+** CLEAR
+*/
+# define NONE "\033[0m"
+# define CLR "\033[2J\033[H"
 
 typedef unsigned int		t_uint;
 typedef unsigned char		t_uchar;

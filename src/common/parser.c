@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 19:04:29 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/27 22:46:03 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:58:51 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static t_stack	*flag_check(int ac, char **av, int *i)
 	{
 		if (!ft_strcmp("-v", av[*i]) && stacks->flag_v == 0)
 			stacks->flag_v = 1;
+		else if (!ft_strcmp("-b", av[*i]) && stacks->flag_b == 0)
+			stacks->flag_b = 1;
 		else
 			break ;
 	}

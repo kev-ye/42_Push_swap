@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 16:57:15 by kaye              #+#    #+#             */
-/*   Updated: 2021/03/28 16:52:25 by kaye             ###   ########.fr       */
+/*   Updated: 2021/03/28 17:58:14 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ void	action(t_stack *stacks, int ac)
 	r = 1;
 	while (r > 0)
 	{
-		option_v(stacks);
+		show_stacks_option(stacks);
 		r = get_next_line(STDIN_FILENO, &line);
 		if (!do_op(stacks, line, r))
 			quit(stacks, "ERROR\n", line);
 		free(line);
 	}
 	if (is_sorted(stacks, size))
-		ft_putstr("\033[1;32mOK\033[0m\n");
+		ft_putstr(GREEN"OK\n"NONE);
 	else
-		ft_putstr("\033[1;31mKO\033[0m\n");
+		ft_putstr(RED"KO\n"NONE);
 }
